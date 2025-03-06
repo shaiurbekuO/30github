@@ -7,6 +7,7 @@ import java.util.*;
 
 
 // } Driver Code Ends
+
 // User function Template for Java
 // User function Template for Java
 
@@ -35,12 +36,22 @@ For Example -> return new Pair(minimum,maximum)
 
 class Solution {
     public Pair<Integer, Integer> getMinMax(int[] arr) {
-        Arrays.sort(arr);
-        int min = arr[0];
-        int max = arr[arr.length -1];
-        return new Pair<>(min, max);
+        if(arr.length == 1) {
+            return new Pair(arr[0], arr[0]);
+        }
+        
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+
+        for(int i = 0 ; i < arr.length ; i++){
+            max = max < arr[i] ? arr[i] : max;
+            min = min > arr[i] ? arr[i] : min;
+        }
+        
+        return new Pair(min, max);
     }
 }
+
 
 
 //{ Driver Code Starts.
